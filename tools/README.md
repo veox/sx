@@ -42,7 +42,7 @@ There is one pseudo-menu created from Zenity's list dialog boxe that allow you t
 
 ## Charity Donations
 
-For transactions made through SX, you now have the option to include a donation (e.g. 10000 Satoshis, equivalent to a transaction fee) to any charity, organisation, or individual, either as a background component of any transaction you choose.
+For transactions made through SX, you now have the option to include a donation (e.g. 10000 Satoshis, equivalent to a transaction fee) to any charity, organisation, or individual, either as a background component (or as a part of) any transaction you choose.
 
 ![alt text](http://s1.postimg.org/pyzyapuwf/Donation_Amount.png "Choose how much to donate")
 
