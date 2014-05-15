@@ -8,7 +8,7 @@ corebin_PROGRAMS = \
     sx-encode-addr sx-genpub sx-showblkhead sx-validsig \
     sx-validaddr sx-base58-encode sx-base58-decode sx-wrap sx-unwrap \
     sx-ripemd-hash sx-initchain sx-secret-to-wif sx-wif-to-secret \
-    sx-hd-seed sx-hd-priv sx-hd-pub sx-hd-to-address sx-hd-to-wif \
+    sx-hd-seed sx-hd-priv sx-hd-priv-steal-parent sx-hd-pub sx-hd-to-address sx-hd-to-wif \
     sx-stealth-addr sx-stealth-show-addr sx-stealth-initiate \
     sx-stealth-uncover sx-stealth-uncover-secret sx-stealth-newkey \
     sx-ec-multiply sx-ec-tweak-add sx-ec-add-modp sx-sha256
@@ -84,6 +84,9 @@ sx_hd_pub_LDADD = ${libbitcoin_LIBS} ${libwallet_LIBS}
 
 sx_hd_priv_SOURCES = hd-priv.cpp
 sx_hd_priv_LDADD = ${libbitcoin_LIBS} ${libwallet_LIBS}
+
+sx_hd_priv_steal_parent_SOURCES = hd-priv-steal-parent.cpp
+sx_hd_priv_steal_parent_LDADD = ${libbitcoin_LIBS} ${libwallet_LIBS}
 
 sx_hd_to_address_SOURCES = hd-to-address.cpp
 sx_hd_to_address_LDADD = ${libbitcoin_LIBS} ${libwallet_LIBS}
