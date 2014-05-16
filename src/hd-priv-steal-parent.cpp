@@ -6,9 +6,8 @@ using namespace bc;
 using namespace libwallet;
 
 //
-// FIXME: copy-pasted from libwallet/hd_keys.cpp
+// FIXME: copy-pasted from libwallet hd_keys.cpp
 //
-
 // long_hash is used for hmac_sha512 in libbitcoin
 constexpr size_t half_long_hash_size = long_hash_size / 2;
 typedef byte_array<half_long_hash_size> half_long_hash;
@@ -38,16 +37,14 @@ int main(int argc, char** argv)
     std::string encoded_child_private_key = argv[1];
     std::string encoded_parent_public_key = argv[2];
 
-    std::cout << encoded_child_private_key << std::endl;
-    std::cout << encoded_parent_public_key << std::endl;
+    std::cout << "child priv: " << encoded_child_private_key << std::endl;
+    std::cout << "parent pub: " << encoded_parent_public_key << std::endl;
 
     hd_private_key child_private_key;
     hd_public_key  parent_public_key;
 
     child_private_key.set_serialized(encoded_child_private_key);
     parent_public_key.set_serialized(encoded_parent_public_key);
-
-    hd_private_key parent_private_key;
 
     // FIXME
     data_chunk data;
@@ -60,9 +57,12 @@ int main(int argc, char** argv)
 
     // FIXME: no ec_sub() yet
     // FIXME: math not verified
-    //parent_private_key = ec_sub(child_private_key.private_key(), I.L);
+    ec_secret ki = child_private_key.private_key();
+    ec_add(ki, I.L);
 
-    std::cout << parent_private_key.serialize() << std::endl;
+    hd_private_key parent_private_key = hd_private_key(ki, I.R, parent_public_key.lineage());
+
+    std::cout << "parent priv: " << parent_private_key.serialize() << std::endl;
 
     return 0;
 }
